@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { View, TextInput, StyleSheet } from 'react-native'
-import CustomButton from '../components/customButton'
+import React, { useState } from 'react';
+import { View, TextInput, StyleSheet } from 'react-native';
+import CustomButton from '../components/customButton';
 
 const EditNote = ({ currentNote, setCurrentPage, editNote }) => {
   const [title, setTitle] = useState(currentNote.title);
@@ -31,8 +31,8 @@ const EditNote = ({ currentNote, setCurrentPage, editNote }) => {
         }}
       />
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -45,6 +45,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     paddingLeft: 10,
   },
-})
+});
 
-export default EditNote
+export default EditNote;

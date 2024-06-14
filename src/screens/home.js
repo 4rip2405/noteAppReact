@@ -1,33 +1,42 @@
 import React from 'react'
-import { FlatList, StyleSheet, View, Text } from 'react-native'
+import { FlatList, StyleSheet, View, Text, TouchableOpacity} from 'react-native'
 import CustomButton from '../components/customButton'
 
-const NoteCard = ({ item, setCurrentPage, setCurrentNote, deleteNote }) => (
-  <View style={styles.card}>
-    <Text style={styles.cardTitle}>{item.title}</Text>
-    <Text>{item.desc}</Text>
-    <View style={styles.buttons}>
-      <CustomButton
-        backgroundColor="#FFC300"
-        color="#151D3B"
-        text="Ubah"
-        fontSize={12}
-        width={100}
-        onPress={() => {
-          setCurrentNote(item);
-          setCurrentPage('edit');
-        }}
-      />
-      <CustomButton
-        backgroundColor="#D82148"
-        color="#fff"
-        text="Hapus"
-        fontSize={12}
-        width={100}
-        onPress={() => deleteNote(item.id)}
-      />
+const NoteCard = ({ item, setCurrentPage, setCurrentNote, deleteNote }) => (  
+
+  <TouchableOpacity onPress={() => {
+    setCurrentNote(item);
+    setCurrentPage('noteDetails');
+  }}>
+    
+   <View style={styles.container}>
+          <View style={styles.card}>
+      <Text style={styles.cardTitle}>{item.title}</Text>
+      <Text numberOfLines={3} ellipsizeMode="tail" style={styles.cardDesc}>{item.desc}</Text>
+      <View style={styles.buttons}>
+        <CustomButton
+          backgroundColor="#FFC300"
+          color="#151D3B"
+          text="Ubah"
+          fontSize={12}
+          width={100}
+          onPress={() => {
+            setCurrentNote(item);
+            setCurrentPage('edit');
+          }}
+        />
+        <CustomButton
+          backgroundColor="#D82148"
+          color="#fff"
+          text="Hapus"
+          fontSize={12}
+          width={100}
+          onPress={() => deleteNote(item.id)}
+        />
+      </View>
     </View>
-  </View>
+   </View>
+  </TouchableOpacity>
 )
 
 const Home = ({ noteList, setCurrentPage, setCurrentNote, deleteNote }) => (
@@ -71,6 +80,11 @@ const styles = StyleSheet.create({
     color: '#203239',
     fontSize: 16,
     marginBottom: 5,
+  },
+  cardDesc: {
+    maxHeight: 60, 
+    overflow: 'hidden', 
+    marginBottom: 10,
   },
   buttons: {
     marginTop: 10,

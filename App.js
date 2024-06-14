@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Home from './src/screens/home'
 import AddNote from './src/screens/addNote'
 import EditNote from './src/screens/editNote'
+import NoteDetails from './src/screens/NoteDetails'
 
 const CurrentPageWidget = ({ currentPage, noteList, setCurrentPage, addNote, editNote, currentNote, setCurrentNote, deleteNote }) => {
   switch (currentPage) {
@@ -18,6 +19,8 @@ const CurrentPageWidget = ({ currentPage, noteList, setCurrentPage, addNote, edi
       return <AddNote setCurrentPage={setCurrentPage} addNote={addNote}/>
     case 'edit':
       return <EditNote currentNote={currentNote} setCurrentPage={setCurrentPage} editNote={editNote} />;
+    case 'noteDetails':
+      return <NoteDetails currentNote={currentNote} setCurrentPage={setCurrentPage} />;
     default:
       return <Home />
   }
@@ -32,6 +35,11 @@ const App = () => {
       id: 1,
       title: 'Note pertama',
       desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+    },
+    {
+      id: 2,
+      title: 'fitur tambahan',
+      desc: 'menambahkan fitur detail yang berguna untuk melihat keseluruhan teks',
     },
   ])
 
